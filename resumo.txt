@@ -1,0 +1,51 @@
+
+extensions do marketplace do visual studio code
+johnpapa.angular-essentials
+
+configurando as preferencias
+
+File >> Preferences >> Settings 
+
+https://marketplace.visualstudio.com/items?itemName=johnpapa.angular-essentials
+johnpapa.angular-essentials
+
+configurações para user settings ficaram configuradas de forma global, já workspace serão somente para o workspace selecione a opção {}/open settings json  para editar o json
+
+copiar do extensions a primeira faixa de atributos, prettier e peacock json e colar no json aberto.
+
+https://marketplace.visualstudio.com/items?itemName=fivethree.vscode-ionic-snippets
+fivethree.vscode-ionic-snippets
+
+https://marketplace.visualstudio.com/items?itemName=ionic-preview.ionic-preview
+ionic-preview.ionic-preview
+
+https://marketplace.visualstudio.com/items?itemName=toba.vsfire
+toba.vsfire
+
+https://marketplace.visualstudio.com/items?itemName=stringham.angular-template-formatter
+stringham.angular-template-formatter
+no final do arquivo acrescente >> "html.format.enable": false,"angular-template-formatter.indentWidth": 2
+
+
+ionic start -h
+
+sudo ionic start IonicFireStoreTasks blank --type=angular
+
+ionic serve
+
+code .
+
+sudo ionic g
+> page
+> auth/pages/login
+
+sudo ionic g module shared/shared --flat
+
+sudo ionic g module core/core --flat
+
+dar permissão a pasta 
+sudo chmod 777 Ionic/projetos/* (todas deste diretório)
+sudo chmod 777 */**
+sudo chmod 777 *
+sudo chmod 777 login/**
+
