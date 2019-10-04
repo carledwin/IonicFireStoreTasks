@@ -10,7 +10,46 @@
     [formGroup]="authForm"
     (submit)="onSubmit()"
   >
-    <ion-item>
+
+  <ng-container *ngIf="!configs.isSiginIn">
+
+      <ion-item>
+          <ion-icon
+            name="person"
+            color="primary"
+            slot="start"
+          ></ion-icon>
+          <ion-input
+            formControlName="name"
+            type="text"
+            placeholder="Name"
+          ></ion-input>
+          <ion-note
+            slot="end"
+            color="danger"
+            *ngIf="name.dirty && name.hasError('required')"
+          >
+            Required
+          </ion-note>
+          <ion-note
+            slot="end"
+            color="danger"
+            *ngIf="name.dirty && name.hasError('minlength')"
+          >
+            Invalid min size(6) name
+          </ion-note>
+          <ion-note
+            slot="end"
+            color="danger"
+            *ngIf="name.dirty && name.hasError('maxlength')"
+          >
+            Invalid max size(30) name
+          </ion-note>
+        </ion-item>
+
+  </ng-container>
+    
+  <ion-item>
       <ion-icon
         name="mail"
         color="primary"
@@ -78,15 +117,16 @@
       type="submit"
       [disabled]="authForm.invalid"
     >
-      Login
+      {{ configs.action }}
     </ion-button>
   </form>
 
   <ion-button
     expand="block"
     fill="clear"
+    (click)="changeAuthAction()"
   >
-    Create account
+    {{ configs.actionChange }}
   </ion-button>
   <ion-button expand="full">
     <ion-icon

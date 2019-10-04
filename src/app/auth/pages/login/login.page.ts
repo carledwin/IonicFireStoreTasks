@@ -7,9 +7,10 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
   styleUrls: ['./login.page.scss']
 })
 export class LoginPage implements OnInit {
+  
   authForm: FormGroup;
 
-  configs: { isSiginIn: true, action: 'Login', actionChange: 'Create account' };
+  configs = { isSiginIn: true, action: 'Login', actionChange: 'Create account' };
 
   private nameControl = new FormControl(' ', [Validators.required, Validators.minLength(3)]);
 
@@ -22,8 +23,13 @@ export class LoginPage implements OnInit {
   createForm(): void {
     this.authForm = this.formBuilder.group({
       email: [' ', [Validators.required, Validators.email]],
-      password: [' ', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
+      password: [' ', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
+      name: [' ', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]]
     });
+  }
+
+  get name(): FormControl {
+    return <FormControl>this.authForm.get('name');
   }
 
   get email(): FormControl {
