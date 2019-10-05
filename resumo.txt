@@ -49,3 +49,23 @@ sudo chmod 777 */**
 sudo chmod 777 *
 sudo chmod 777 login/**
 
+
+sudo npm i firebase@~5.9.2 @angular/fire@~5.1.2
+
+no firebase metodo de login usar a opção authentication > metodo de login> email/senha > ativar e salvar
+
+
+login com facebook
+https://developers.facebook.com/apps/543737816434004/fb-login/quickstart/
+
+copiar do firebase a url da configuaração do facebook e colar em configurações...developers.facebook Login do Facebook 
+https://ionic-firestore-tasks-5e034346ff5.firebaseapp.com/__/auth/handler
+  
+
+criar um service auth para autenticar via firebase 
+ionic g service core/services/auth
+
+ionic g service core/services/overlay
+
+sudo chmod 777 environments/**
+

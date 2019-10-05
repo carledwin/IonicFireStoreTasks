@@ -8,7 +8,7 @@
   </h1>
   <form
     [formGroup]="authForm"
-    (submit)="onSubmit()"
+    (submit)="onSubmit(authProviders.Email)"
   >
 
   <ng-container *ngIf="!configs.isSiginIn">
@@ -128,7 +128,7 @@
   >
     {{ configs.actionChange }}
   </ion-button>
-  <ion-button expand="full">
+  <ion-button expand="full" (click)="onSubmit(authProviders.Facebook)">
     <ion-icon
       name="logo-facebook"
       slot="start"
