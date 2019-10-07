@@ -1,7 +1,10 @@
-import { AuthProvider } from './../../../core/services/auth.types';
-import { AuthService } from './../../../core/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { AuthService } from './../../../core/services/auth.service';
+import { AuthProvider } from './../../../core/services/auth.types';
+import { OverlayService } from './../../../core/services/overlay.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +21,11 @@ export class LoginPage implements OnInit {
 
   private nameControl = new FormControl(' ', [Validators.required, Validators.minLength(3)]);
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) {}
+  constructor(private authService: AuthService, 
+              private navCtrl: NavController,
+              private activatedRoute: ActivatedRoute,
+              private formBuilder: FormBuilder,
+              private overlayService: OverlayService) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -46,6 +53,8 @@ export class LoginPage implements OnInit {
 
   async onSubmit(provider: AuthProvider): Promise<void> {
     
+    const loading = await this.overlayService.loading();
+
     try{
 
       const credentials = await this.authService.orchestrator({
@@ -59,9 +68,19 @@ export class LoginPage implements OnInit {
 
       console.log('Redirecting....');
 
+      this.navCtrl.navigateForward(this.activatedRoute.snapshot.queryParamMap.get('redirect') || '/tasks');
+
     }catch(error){
       
       console.error('Auth error: ', error);
+
+      await this.overlayService.toast({
+        message: error.message
+      });
+
+    }finally{
+
+      loading.dismiss();
     }
 
   }

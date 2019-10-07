@@ -1,0 +1,19 @@
+ <ion-item-sliding #sliding>
+   <ion-item (click)="updateEventEmitter.emit(task)">
+     {{ task.title }}
+    <ion-toggle slot="end" 
+                color="primary" 
+                [checked]="task.done" 
+                (ionChange)="doneEventEmitter.emit(task)"
+                (click)="$event.stopPropagation()"></ion-toggle>
+   </ion-item>
+
+   <ion-item-options side="start">
+     <ion-item-option color="danger" (click)="deleteEventEmitter.emit(task); sliding.close()">
+       <ion-icon slot="icon-only" name="trash"></ion-icon>
+     </ion-item-option>
+     <ion-item-option color="primary" (click)="updateEventEmitter.emit(task); sliding.close()">
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-item-option>
+   </ion-item-options>
+ </ion-item-sliding>

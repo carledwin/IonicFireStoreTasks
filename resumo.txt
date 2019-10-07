@@ -69,3 +69,55 @@ ionic g service core/services/overlay
 
 sudo chmod 777 environments/**
 
+criar guard
+
+ionic g guard core/guards/auth
+
+criando um elemento para roteamento/routing para criar um par com um modulo de roteamento e flat para nao criar um novo diretorio
+ionic g module auth/auth --routing --flat
+
+gerando nova pagina
+ionic g page tasks/pages/task-list
+
+gerando um modulo para task-list
+ionic g module tasks/tasks --routing --flat
+
+gerando componente 
+ionic g component tasks/components/task-item
+
+criando um modulo para controlar os components
+ionic g module tasks/components/components --flat
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
