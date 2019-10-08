@@ -89,6 +89,36 @@ criando um modulo para controlar os components
 ionic g module tasks/components/components --flat
 
 
+criar um banco de dados no firestore no modo bloqueado
+configurar a regra para que somemente usuarios logados e registrados no firebase possam ler e escrever no banco
+
+na aba se regras
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false; >>> allow read, write: if request.auth.uid != null;
+   }
+  }
+}
+
+>>>> e publicar
+
+testar no firebase -> firestore via simulador
+
+tipo de simulacao: get
+local: users/ererer/tasks/2223
+marcar autenticado 
+provedor: anonymous google.com
+executar 
+
+criando uma class para controlar o firestore no angular
+ng generate class core/classes/firestore
+corrigir o nome do arquivo de firestore.ts >>> firestore.class.ts
+
+criando um service para tasks 
+ionic generate service tasks/services/tasks 
+
 
 
 
