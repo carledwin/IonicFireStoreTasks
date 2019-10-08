@@ -6,12 +6,19 @@
 
 <ion-content padding>
 
-  <ion-list>
-    <app-task-item *ngFor="let task of (tasks$ | async)" [task]="task"></app-task-item>
+  <ion-list *ngIf="(tasks$ | async) as tasks">
+    <ng-container *ngIf="tasks.length > 0; else noTasks">
+      <app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>
+    </ng-container>
+    <ng-template #noTasks>
+      <ion-item lines="none">
+        No Tasks yet .... {{tasks.length}}
+      </ion-item>
+    </ng-template>
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
+    <ion-fab-button routerLink="create" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

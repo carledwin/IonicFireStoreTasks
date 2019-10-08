@@ -23,7 +23,7 @@ export class TasksService extends Firestore<Task> {
       if(user) {
 
         this.setCollection(`/users/${user.uid}/tasks`);
-
+        console.log('uid user >> ', user.uid);
         return;
       }
 

@@ -119,6 +119,19 @@ corrigir o nome do arquivo de firestore.ts >>> firestore.class.ts
 criando um service para tasks 
 ionic generate service tasks/services/tasks 
 
+console do firebase
+recuperar o uid do usuario logado no menu Authentication
+iniciar uma collection /users colar o uid no campo codigo do documento
+no primeiro campo colar o uid para criar um documento
+adicionar coleção chamada tasks (para criar uma coleção de tasks para esse usuário)
+incluir uma coleção para tasks >> gerar automaticamente um codigo, criar um campo id (colar neste campo o código gerado) e criar um campo title para a 
+descrição da task
+
+crirar uma nova pagina 
+inoic g page tasks/pages/task-save
+
+
+
 
 
 
