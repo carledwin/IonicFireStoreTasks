@@ -3,16 +3,20 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tasks"></ion-back-button>
     </ion-buttons>
-    <ion-title>Create Task</ion-title>
+    <ion-title>{{ pageTitle }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-  <ion-item>
-    <ion-icon name="paper" slot="start" color=" primary"></ion-icon>
-    <ion-input type="text" placeholder="Title" autofocus="true" inputmode="text"></ion-input>
-  </ion-item>
-  <ion-button expand="full" type="submit">Save</ion-button>
+  <form [formGroup]="taskFormGroup" (submit)="onSubmit()">
+    <ion-item>
+      <ion-icon name="paper" slot="start" color=" primary"></ion-icon>
+      <ion-input type="text" placeholder="Title" autofocus="true" inputmode="text"
+      formControlName="title"></ion-input>
+      <ion-toggle *ngIf="taskId" slot="end" color="primary" formControlName="done"></ion-toggle>
+    </ion-item>
+    <ion-button expand="full" type="submit" [disabled]="taskFormGroup.invalid">Save</ion-button>
+  </form>
 
 </ion-content>
