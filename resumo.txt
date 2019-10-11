@@ -131,11 +131,49 @@ crirar uma nova pagina
 inoic g page tasks/pages/task-save
 
 
+<!-- 
+                property bind [name]="page.icon"
+                interpolacao {{ page.text }}
+  
+                envolver o ion-item no ion-toggle com autoHide false para nao ocultar
+                o ion-item quanto o menu estiver desabilitado 
+              -->
+			  
+			  
+			  
+			          /* para uma consulta composta, ou seja com orderby precisamos configurar 
+            indice
+
+            pode ser lancado no console um erro, ja com o link para criar o indice
+            automaticamente 
+
+            core.js:9110 ERROR FirebaseError: The query requires an index. You can create it 
+            here: https://console.firebase.google.com/v1/r/project/ionic-firestore-tasks-5e0f5/
+            firestore/indexes?create_composite=Cllwcm9qZWN0cy9pb25pYy1maXJlc3RvcmUtdGFza3MtNW
+            UwZjUvZGF0YWJhc2VzLyhkZWZhdWx0KS9jb2xsZWN0aW9uR3JvdXBzL3Rhc2tzL2luZGV4ZXMvXxA
+            BGggKBGRvbmUQARoJCgV0aXRfrerdsZRABGgwKCF9fbmFtZV9fEAE
+
+            https://firebase.google.com/docs/firestore/query-data/indexing
+
+            vamos clicar no link entao para sermos redirecionados ao firebase e clicar em criar indice
+            o mais indicado é fazer dessa forma.... de acordo com o que for indicado pelo firestore
+
+            eh possivel adiconar indices manualmente tambem
+        */
 
 
+componentizando o menu para poder ser utilizado por outras paginas de forma compartilhada
+ionic g component shared/components/menu-toggle
 
+criando um template inline para o meu-toggle
+remova os arquivos .html e o .scss
 
+e com a crase escrever um template multiline
 
+configurar o MenuToggleComponent no SharedModule e importar o IonicModule
+
+criando o component de logout
+ionic g component shared/components/logout-button
 
 
 

@@ -4,6 +4,8 @@ import { Observable, of } from 'rxjs';
 import { Task } from '../../models/task.model';
 import { NavController } from '@ionic/angular';
 import { TasksService } from './../../services/tasks.service';
+import { take } from 'rxjs/operators';
+import { loadingController } from '@ionic/core';
 
 @Component({
   selector: 'app-task-list',
@@ -18,10 +20,15 @@ export class TaskListPage {
     private overlayService: OverlayService,
     private navCtrl: NavController) { }
 
-  ionViewDidEnter(): void {
+  async ionViewDidEnter(): Promise<void> {
   
+    const loading = await this.overlayService.loading();
+
     this.tasks$ = this.tasksService.getAll();
+    
     console.log('Tasks... >>> ', this.tasks$);
+    
+    this.tasks$.pipe(take(1)).subscribe(tasks => loading.dismiss());
   }
 
   onUpdate(task: Task): void {
@@ -53,6 +60,17 @@ export class TaskListPage {
       'No'
     ]
   });
+  }
+
+  async onDone(task: Task): Promise<void>{
+
+    const taskToUpdate = {... task, done: !task.done};
+
+    await this.tasksService.update(taskToUpdate);
+
+    await this.overlayService.toast({
+      message: `Task "${task.title}" ${taskToUpdate.done ? 'completed' : 'updated'}!`
+    });
   }
 
 }
