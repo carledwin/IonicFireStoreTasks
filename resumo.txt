@@ -175,16 +175,77 @@ configurar o MenuToggleComponent no SharedModule e importar o IonicModule
 criando o component de logout
 ionic g component shared/components/logout-button
 
+buildar o projeto para implantar no firebase
+sudo npm run build
 
+para um build para produção otimizado (para ser entendido pelo angular/cli (ng)) vai -- e depois o comando 
+sudo npm run build -- --prod
 
+sera criada a pasta WWW
 
+para instalar como dependencia de desenvolvimento (-D) na faixa da versão 6
+sudo npm i -D firebase-tools@6
 
+é possível verificar o package json a versão instalada 
 
+********** instalando o firebase/cli (interface de linha de comando) para fazer o deploy no firebase host
+>>> nao executar este >>> sudo npm install -g firebase-tools
 
+acessando o firebase através do client (npx)para rodar binarios e caso nao tenhamos instalado as dependencias firebase-tools ele buscaria na rede
+npx firebase login
 
+para começar as configurações precisamos rodar o comando init é necessário informar a ele quais recursos
+do firebase queremos configurar no projeto
+npx firebase init
+ele dara opçoes selecione as que quiser clicando na tecla espaco vamos selecionar
+> Firestore e > Hosting
+e precione enter
 
+precisamos agora selecionar qual o projeto criado lá no firebase queremos
 
+ele irá perguntar qual arquivo sera utilizado para guardar as regras do firestore e por padrao ele ira
+criar um com o nome 'firestore.rules' vamos deixar esse
 
+ele pergunta tambem qual arquivo sera utilizado para guardar os indices e ele tambem indica um 
+arquivo com o nome padrao 'firestore.indexes.json' vamos deixar esse
+
+ele pergunta qual diretorio publico vamos deixar como publico para a aplicacao onde ele vai
+fazer o deploy dos arquivos no host no nosso caso criamos o www no build e esse nome que iremos indicar
+'www'
+
+ele pergunta se desenjamos configurar o projeto como uma single-page-aplication
+respondemos 'Y'
+
+ele informa que o arquivo index.html ja existe e pergunta se queremos sobrescrever
+respondemos 'N'
+
+*********************************
+repare que foram criados 4 arquivos 
+.firebaserc - configura o projeto padrao
+firebase.json - configura os recursos adicionados para o projeto e configura o diretorio publico .... e faz a 
+reescrita para a single-page-aplication (** qualquer rota)
+firestore.indexes.json - contem os indeces criados
+firestore.rules - possui as regras do firestore com configuração de controle de acesso
+
+vamos configurar o arquivo package.json incluindo um novo scritp
+sempre vai gerar um novo build da aplicacao e apos o build vai fazer um deploy no firebase host
+"deploy:firebase": "npm run build -- --prod && npx firebase deploy" // "cross-env npm run build -- --prod && npx firebase deploy" >>>>(vamos fixar o npx no inicio como 
+esta sendo executado local) e o (somente no windows **** cross-env  no inicio do comando para rodar da mesma forma em todos os sistemas operacionais)
+
+***************************
+
+para o deploy no firebase 
+sudo npm run deploy:firebase
+
+✔  Deploy complete!
+
+Project Console: https://console.firebase.google.com/project/ionic-firestore-tasks-5e0f5/overview
+Hosting URL: https://ionic-firestore-tasks-5e0f5.firebaseapp.com
+
+configurar uma politica de privacidade para o app no facebook 
+https://developers.facebook.com/
+
+Painel > configuracoes > Basico 
 
 
 
