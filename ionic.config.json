@@ -1,5 +1,7 @@
 {
   "name": "IonicFireStoreTasks",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

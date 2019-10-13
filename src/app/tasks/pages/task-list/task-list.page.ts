@@ -46,7 +46,7 @@ export class TaskListPage {
       message: `Do you really want to delete the task "${task.title}"?`,
     buttons: [
       {
-        text: 'Yess',
+        text: 'Yes',
         handler: async () => {
 
           await this.tasksService.delete(task);

@@ -16,7 +16,7 @@ import { environment } from 'src/environments/environment';
     AngularFireAuthModule,
     AngularFirestoreModule.enablePersistence({
       experimentalTabSynchronization: true
-    }
+    })
   ],
   exports: [BrowserModule, IonicModule],
   providers: [
